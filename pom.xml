@@ -28,11 +28,11 @@
   <description>Livy Project</description>
   <url>http://livy.incubating.apache.org/</url>
 
-  <parent>
-    <groupId>org.apache</groupId>
-    <artifactId>apache</artifactId>
-    <version>18</version>
-  </parent>
+<!--  <parent>-->
+<!--    <groupId>org.apache</groupId>-->
+<!--    <artifactId>apache</artifactId>-->
+<!--    <version>18</version>-->
+<!--  </parent>-->
 
   <licenses>
     <license>
@@ -172,32 +172,38 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
   </properties>
-
-  <repositories>
+  <distributionManagement>
     <repository>
-      <id>central</id>
-      <!-- This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution -->
-      <name>Maven Repository</name>
-      <url>https://repo1.maven.org/maven2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
+      <id>rdc-releases</id>
+      <name>rdc-releases</name>
+      <url>https://repo.rdc.aliyun.com/repository/23480-release-Cm4wtg/</url>
     </repository>
-    <repository>
-      <id>apache-repo</id>
-      <name>Apache Repository</name>
-      <url>https://repository.apache.org/content/repositories/releases</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  </distributionManagement>
+<!--  <repositories>-->
+<!--    <repository>-->
+<!--      <id>central</id>-->
+<!--      &lt;!&ndash; This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution &ndash;&gt;-->
+<!--      <name>Maven Repository</name>-->
+<!--      <url>https://repo1.maven.org/maven2</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+<!--    <repository>-->
+<!--      <id>apache-repo</id>-->
+<!--      <name>Apache Repository</name>-->
+<!--      <url>https://repository.apache.org/content/repositories/releases</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+<!--  </repositories>-->
 
   <modules>
     <module>api</module>
@@ -1061,9 +1067,12 @@
         </property>
       </activation>
       <properties>
-        <spark.scala-2.12.version>3.0.0</spark.scala-2.12.version>
+<!--        注：用livy-client-http提交spark3.2.3有包冲突要解决！！首先还是用spark2.4.x和spark3.0/spark3.1-->
+        <scala.version>${scala-2.12.version}</scala.version>
+        <spark.scala-2.12.version>3.2.3</spark.scala-2.12.version>
         <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
-        <spark.version>${spark.scala-2.11.version}</spark.version>
+        <spark.version>${spark.scala-2.12.version}</spark.version>
+        <scala.binary.version>2.12</scala.binary.version>
         <netty.spark-2.12.version>4.1.86.Final</netty.spark-2.12.version>
         <netty.spark-2.11.version>4.1.86.Final</netty.spark-2.11.version>
         <netty.version>${netty.spark-2.11.version}</netty.version>
@@ -1073,9 +1082,9 @@
         <json4s.spark-2.12.version>3.6.6</json4s.spark-2.12.version>
         <json4s.version>${json4s.spark-2.11.version}</json4s.version>
         <spark.bin.download.url>
-          https://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop2.7.tgz
+          https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop2.7.tgz
         </spark.bin.download.url>
-        <spark.bin.name>spark-3.0.0-bin-hadoop2.7</spark.bin.name>
+        <spark.bin.name>spark-3.2.3-bin-hadoop2.7</spark.bin.name>
       </properties>
     </profile>
 

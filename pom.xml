@@ -28,11 +28,11 @@
   <description>Livy Project</description>
   <url>http://livy.incubating.apache.org/</url>
 
-  <parent>
-    <groupId>org.apache</groupId>
-    <artifactId>apache</artifactId>
-    <version>18</version>
-  </parent>
+<!--  <parent>-->
+<!--    <groupId>org.apache</groupId>-->
+<!--    <artifactId>apache</artifactId>-->
+<!--    <version>18</version>-->
+<!--  </parent>-->
 
   <licenses>
     <license>
@@ -173,31 +173,13 @@
 
   </properties>
 
-  <repositories>
+  <distributionManagement>
     <repository>
-      <id>central</id>
-      <!-- This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution -->
-      <name>Maven Repository</name>
-      <url>https://repo1.maven.org/maven2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
+      <id>rdc-releases</id>
+      <name>rdc-releases</name>
+      <url>https://repo.rdc.aliyun.com/repository/23480-release-Cm4wtg/</url>
     </repository>
-    <repository>
-      <id>apache-repo</id>
-      <name>Apache Repository</name>
-      <url>https://repository.apache.org/content/repositories/releases</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  </distributionManagement>
 
   <modules>
     <module>api</module>

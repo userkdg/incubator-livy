@@ -69,6 +69,7 @@ Livy is built using [Apache Maven](http://maven.apache.org). To check out and bu
 git clone https://github.com/apache/incubator-livy.git
 cd incubator-livy
 mvn package
+mvn clean deploy -B -V -e         -Pspark-3.0         -DskipTests         -DskipITs         -Dmaven.javadoc.skip=true
 ```
 
 You can also use the provided [Dockerfile](./Dockerfile):
